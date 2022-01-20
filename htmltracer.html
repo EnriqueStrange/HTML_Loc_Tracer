@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get location</title>
+</head>
+<p>Don't want to share your location</p>
+
+<button onclick="getLocation()">Then click Here</button>
+
+<p id= "demo"></p>
+<script>
+    var x = document.getElementById("demo")
+    function  getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, errorCallback, {timeout:5000});
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        var latlong = x.innerHTML = "Latitude: " +position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+    //document.location='http://192.168.168.131:4111/'+latlong
+    }
+    function errorCallback(error) {
+        x.innerHTML = "failed";
+    }
+</script>
+<body>   
+</body>
+</html>
